@@ -1,6 +1,6 @@
 use lambda_runtime::{Error, LambdaEvent};
 
-// use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
 
 use crate::query::*;
