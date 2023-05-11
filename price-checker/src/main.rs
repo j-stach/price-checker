@@ -18,6 +18,5 @@ pub async fn query_handler(event: LambdaEvent<Value>) -> Result<Value, Error> {
 #[tokio::main]
 async fn main() -> Result<(), lambda_runtime::Error> {
     let func = lambda_runtime::service_fn(query_handler);
-    lambda_runtime::run(func).await?;
-    Ok(())
+    lambda_runtime::run(func).await
 }
