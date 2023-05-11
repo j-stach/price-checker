@@ -7,11 +7,21 @@ use crate::query::*;
 mod query;
 
 
-async fn query_handler(event: LambdaEvent<Value>) -> Result<Value, Error> {
+async fn query_handler(event: LambdaEvent<Request>) -> Result<Response, Error> {
     let (event, _context) = event.into_parts();
     let symbol = event["symbol"].to_string();
     let message = query_price(symbol)?;
     Ok(json!({ "message": format!("{}", message) }))
+}
+
+#[derive(Serialize, Deserialize)]
+struct Request {
+    symbol: String,
+}
+
+#[derive(Serialize, Deserialize)]
+struct Response {
+    message: String,
 }
 
 
