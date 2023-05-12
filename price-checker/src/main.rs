@@ -8,10 +8,10 @@ mod query;
 
 
 async fn query_handler(event: LambdaEvent<Request>) -> Result<Response, Error> {
-    let (event, _context) = event.into_parts();
-    let symbol = event["symbol"].to_string();
+    let (request, _context) = event.into_parts();
+    let symbol = request.symbol;
     let message = query_price(symbol)?;
-    Ok(json!({ "message": format!("{}", message) }))
+    Ok(Response { message })
 }
 
 #[derive(Serialize, Deserialize)]
