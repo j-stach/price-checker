@@ -23,8 +23,8 @@ pub fn query_price(symbol: String) -> Result<String, reqwest::Error> {
 
     let url = format!("https://api.marketdata.app/v1/stocks/quotes/{}", symbol);
     let client = Client::new();
-    let resp = client.get(url).send()?;
-    let price_quote: PriceQuote = resp.json()?;
+    let response = client.get(url).send()?;
+    let price_quote: PriceQuote = response.json()?;
 
     let symbol: &String = &price_quote.symbol[0];
     let last_price: &f32 = &price_quote.last[0];
