@@ -2,9 +2,7 @@ use lambda_runtime::{run, service_fn, Error, LambdaEvent};
 use serde::{Deserialize, Serialize};
 
 use crate::query::*;
-use crate::timestream::*;
 mod query;
-mod timestream;
 
 
 async fn query_handler(event: LambdaEvent<Request>) -> Result<Response, Error> {
